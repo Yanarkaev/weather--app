@@ -1,0 +1,17 @@
+body{
+    padding: 0;
+    background: linear-gradient(to right, rgb(0, 102, 255), rgb(70, 159, 255));
+}
+
+.wrapper{
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.506), rgba(255, 255, 255, 0.304));
+    padding: 20px;
+    width: 33%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    border-radius: 5px;
+}
+
+/* тут ваши стили */
