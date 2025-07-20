@@ -1,6 +1,5 @@
 let key = 'db69ca8c35f1409f80391800250507'
 let api = `http://api.weatherapi.com/v1/current.json?key=${key}&q=Урус-Мартан&lang=ru`
-
 let object = {
     "location": {
         "name": "Урус-Мартан",
@@ -48,6 +47,24 @@ let object = {
         "gust_kph": 9.9
     }
 }
+
+let weatherStatus = document.querySelector('.weather-status')
+let weatherIcon = document.querySelector('.weather-icon')
+let city = document.querySelector('.city')
+let day = document.querySelector('.day')
+let degreesc = document.querySelector('.degreesc')
+let degreesf = document.querySelector('.degreesf')
+
+function render(obj){
+weatherStatus.innerHTML = obj.current.condition.text
+weatherIcon.src = obj.current.condition.icon
+city.innerHTML = obj.location.country.name
+// day.innerHTML = obj.current.
+degreesc.innerHTML = obj.current.temp_c
+degreesf.innerHTML = obj.current.temp_f
+}
+
+render(object)
 
 async function getWeather() {
     let request = await fetch(api);
