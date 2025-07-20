@@ -1,5 +1,7 @@
 let key = 'db69ca8c35f1409f80391800250507'
-let api = `http://api.weatherapi.com/v1/current.json?key=${key}&q=Урус-Мартан&lang=ru`
+let api = `http://api.weatherapi.com/v1/current.json?key=${key}&lang=ru&q=`
+let input = document.querySelector('.input')
+let button = document.querySelector('.search-btn')
 
 let object = {
     "location": {
@@ -49,14 +51,17 @@ let object = {
     }
 }
 
-async function getWeather() {
-    let request = await fetch(api);
+async function getWeather(city) {
+    let request = await fetch(api + city);
     let response = await request.json();
     console.log(response)
 }
 
-getWeather()
+button.addEventListener('click', function () {
+    getWeather(input.value)
+});
 
+// weahter-get
 
 // Задача 1. Получить инпут и кнопку. по клику на кнопку выводить текст из инпута в консоль | Айша
 // Задача 2. Написать функцию, которая отображает данные из объекта на страницу в соответствующие поля. Нужно получить элементы из HTML и вставлять в них текст из объекта с помощью innerHTML | Камила
