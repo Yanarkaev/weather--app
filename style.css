@@ -13,5 +13,23 @@ body{
     transform: translate(-50%, -100%);
     border-radius: 5px;
 }
-
-/* тут ваши стили */
+.city{
+    color: aliceblue;   
+    font-size: 24px;
+    margin-top: 10px;
+}
+.day{
+    color: aliceblue;
+    font-size: 18px;
+    margin-bottom: 10px ;
+}
+.degreesc{
+    color: aliceblue;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.degreesf{
+    color: aliceblue;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
