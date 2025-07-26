@@ -3,7 +3,7 @@ let api = `http://api.weatherapi.com/v1/current.json?key=${key}&lang=ru&q=`
 let input = document.querySelector('.input')
 let button = document.querySelector('.search-btn')
 
-let api = `http://api.weatherapi.com/v1/current.json?key=${key}&q=Урус-Мартан&lang=ru`
+// let api = `http://api.weatherapi.com/v1/current.json?key=${key}&q=Урус-Мартан&lang=ru`
 
 let object = {
     "location": {
@@ -60,28 +60,23 @@ let day = document.querySelector('.day')
 let degreesc = document.querySelector('.degreesc')
 let degreesf = document.querySelector('.degreesf')
 
-function render(obj){
-weatherStatus.innerHTML = obj.current.condition.text
-weatherIcon.src = obj.current.condition.icon
-city.innerHTML = obj.location.country.name
-// day.innerHTML = obj.current.
-degreesc.innerHTML = obj.current.temp_c
-degreesf.innerHTML = obj.current.temp_f
+function render(obj) {
+    weatherStatus.innerHTML = obj.current.condition.text
+    weatherIcon.src = obj.current.condition.icon
+    city.innerHTML = `${obj.location.name}, ${obj.location.region}`
+    // day.innerHTML = obj.current.
+    degreesc.innerHTML = obj.current.temp_c + " °C"
+    degreesf.innerHTML = obj.current.temp_f + " °F"
 }
-
-render(object)
 
 async function getWeather(city) {
     let request = await fetch(api + city);
     let response = await request.json();
-    console.log(response)
+    console.log(response);
+    render(response)
 }
 
 button.addEventListener('click', function () {
     getWeather(input.value)
+    // console.log(input.value);
 });
-
-// weahter-get
-
-// Задача 1. Получить инпут и кнопку. по клику на кнопку выводить текст из инпута в консоль | Айша
-// Задача 2. Написать функцию, которая отображает данные из объекта на страницу в соответствующие поля. Нужно получить элементы из HTML и вставлять в них текст из объекта с помощью innerHTML | Камила
