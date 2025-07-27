@@ -59,6 +59,14 @@ let city = document.querySelector('.city')
 let day = document.querySelector('.day')
 let degreesc = document.querySelector('.degreesc')
 let degreesf = document.querySelector('.degreesf')
+let loader = document.querySelector('.loader')
+let error = document.querySelector('.error')
+let hasWeather = 0;
+
+
+
+let infoWrapper = document.querySelector('.info-wrapper')
+
 
 function render(obj) {
     weatherStatus.innerHTML = obj.current.condition.text
@@ -69,11 +77,28 @@ function render(obj) {
     degreesf.innerHTML = obj.current.temp_f + " °F"
 }
 
+
 async function getWeather(city) {
-    let request = await fetch(api + city);
-    let response = await request.json();
-    console.log(response);
-    render(response)
+    loader.style.display = 'block'
+    error.style.display = 'none'
+    button.disabled = true
+    hasWeather = 1
+    infoWrapper.style.display = 'none'
+    try {
+        let request = await fetch(api + city);
+        let response = await request.json();
+        render(response)
+        infoWrapper.style.display = 'flex'
+    } catch {
+        infoWrapper.style.display = 'none'
+        error.style.display = 'block'
+    } finally {
+        hasWeather = 2
+        loader.style.display = 'none'
+        button.disabled = false
+
+    }
+
 }
 
 button.addEventListener('click', function () {
